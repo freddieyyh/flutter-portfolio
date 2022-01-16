@@ -5,7 +5,6 @@ import 'package:sample/screens/main/components/area_info_text.dart';
 import 'package:sample/screens/main/components/coding.dart';
 import 'package:sample/screens/main/components/knowledges.dart';
 import 'package:sample/screens/main/components/my_info.dart';
-import 'package:sample/screens/main/components/skills.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -35,7 +34,6 @@ class SideMenu extends StatelessWidget {
                     title: "Age",
                     text: "22",
                   ),
-                  Skills(),
                   SizedBox( height: defaultPadding,),
                   Coding(),
                   Divider(),

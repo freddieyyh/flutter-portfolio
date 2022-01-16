@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/constants.dart';
-import 'package:sample/responsive.dart';
-import 'package:sample/screens/main/components/side_menu.dart';
+import 'package:sample/screens/home/components/title_header.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key, required this.children}) : super(key: key);
@@ -11,38 +10,18 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // We hide the appbar on desktop
-      appBar: Responsive.isDesktop(context)
-          ? null
-          : AppBar(
-        backgroundColor: bgColor,
-        leading: Builder(
-          builder: (context) => IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            icon: Icon(Icons.menu),
-          ),
-        ),
-      ),
-      drawer: SideMenu(),
       body: Center(
         child: Container(
           constraints: BoxConstraints(maxWidth: maxWidth),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (Responsive.isDesktop(context))
-                Expanded(
-                  flex: 2,
-                  child: SideMenu(),
-                ),
-              SizedBox(width: defaultPadding),
               Expanded(
                 flex: 7,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      SizedBox(width: defaultPadding),
                       ...children,
                       // our footer
                     ],

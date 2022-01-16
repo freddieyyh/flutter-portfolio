@@ -1,10 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:sample/components/animated_progress_indicator.dart';
 import 'package:sample/constants.dart';
 import 'package:sample/responsive.dart';
 
-class HomeBanner extends StatelessWidget {
-  const HomeBanner({
+class MyHeader extends StatelessWidget {
+  const MyHeader({
     Key? key,
   }) : super(key: key);
 
@@ -23,17 +24,17 @@ class HomeBanner extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Discover my Amazing \nArt Space!",
+                  "윤영한 포트폴리오",
                   style: Responsive.isDesktop(context)
-                      ? Theme.of(context).textTheme.headline3!.copyWith(
+                      ? Theme.of(context).textTheme.headline2!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   )
-                      : Theme.of(context).textTheme.headline5!.copyWith(
+                      : Theme.of(context).textTheme.headline3!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -42,20 +43,6 @@ class HomeBanner extends StatelessWidget {
                   const SizedBox(height: defaultPadding / 2),
                 MyBuildAnimatedText(),
                 SizedBox(height: defaultPadding),
-                if (!Responsive.isMobileLarge(context))
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: defaultPadding * 2,
-                          vertical: defaultPadding),
-                      backgroundColor: primaryColor,
-                    ),
-                    child: Text(
-                      "EXPLORE NOW",
-                      style: TextStyle(color: darkColor),
-                    ),
-                  ),
               ],
             ),
           )
@@ -74,14 +61,15 @@ class MyBuildAnimatedText extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTextStyle(
       // it applies same style to all the widgets under it
-      style: Theme.of(context).textTheme.subtitle1!,
+      style: Theme.of(context).textTheme.headline5!,
       maxLines: 1,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (!Responsive.isMobileLarge(context)) FlutterCodedText(),
           if (!Responsive.isMobileLarge(context))
             SizedBox(width: defaultPadding / 2),
-          Text("I build "),
+          Text("Hi, I'm "),
           Responsive.isMobile(context)
               ? Expanded(child: AnimatedText())
               : AnimatedText(),
@@ -104,15 +92,11 @@ class AnimatedText extends StatelessWidget {
     return AnimatedTextKit(
       animatedTexts: [
         TyperAnimatedText(
-          "responsive web and mobile app.",
+          "Younghan",
           speed: Duration(milliseconds: 60),
         ),
         TyperAnimatedText(
-          "complete e-Commerce app UI.",
-          speed: Duration(milliseconds: 60),
-        ),
-        TyperAnimatedText(
-          "Chat app with dark and light theme.",
+          "a server developer",
           speed: Duration(milliseconds: 60),
         ),
       ],
@@ -132,8 +116,8 @@ class FlutterCodedText extends StatelessWidget {
         text: "<",
         children: [
           TextSpan(
-            text: "flutter",
-            style: TextStyle(color: primaryColor),
+            text: "dev",
+            style: TextStyle(color: bodyTextColor),
           ),
           TextSpan(text: ">"),
         ],

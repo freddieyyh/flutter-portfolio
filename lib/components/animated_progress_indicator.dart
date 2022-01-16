@@ -5,11 +5,13 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
   const AnimatedCircularProgressIndicator({
     Key? key,
     required this.percentage,
-    required this.label,
+    required this.title,
+    required this.contents,
   }) : super(key: key);
 
   final double percentage;
-  final String label;
+  final String title;
+  final String contents;
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +42,11 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
         ),
         SizedBox(height: defaultPadding / 2),
         Text(
-          label,
-          maxLines: 1,
+          title,
+          maxLines: 2,
+          textWidthBasis: TextWidthBasis.longestLine,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.headline6,
         ),
       ],
     );
@@ -64,7 +67,7 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: defaultPadding),
+      padding: const EdgeInsets.all(defaultPadding),
       child: TweenAnimationBuilder(
         tween: Tween<double>(begin: 0, end: percentage),
         duration: defaultDuration,
@@ -85,6 +88,7 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
               value: value,
               color: primaryColor,
               backgroundColor: darkColor,
+              minHeight: 10.0,
             ),
           ],
         ),

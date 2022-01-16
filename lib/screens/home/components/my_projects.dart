@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sample/constants.dart';
 import 'package:sample/models/Project.dart';
 import 'package:sample/responsive.dart';
+import 'package:sample/screens/home/components/title_header.dart';
 
 import 'project_card.dart';
 
@@ -15,11 +16,7 @@ class MyProjects extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "My Projects",
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        const SizedBox(height: defaultPadding),
+        TitleHeader(title: "Projects",),
         Responsive(
           mobile: ProjectsGridView(
             crossAxisCount: 1,
